@@ -75,13 +75,12 @@ public class SecurityConfig {
         //AuthenticationManager authenticationManager = http.getSharedObject(AuthenticationManager.class);
        
         http.authorizeRequests()
-                .antMatchers("/sample/all").permitAll()
-                .antMatchers("/sample/ex*").permitAll()
-                .antMatchers("/sample/member").hasRole("USER");
+                .antMatchers("/user/**").hasRole("USER");
 
-        http.formLogin(); // 인가 or 인증에 문제 시 로그인 화면 반환
+        // http.formLogin(); // 인가 or 인증에 문제 시 로그인 화면 반환
         http.csrf().disable(); // csrf 토큰 비활성화
-
+        http.formLogin(formLogin -> formLogin.loginPage("/login")); // 커스텀 로그인 추가
+        
         http.logout(); // invalidatedHttpSession() deleteCookies() 쿠키나 세션을 무효화 시키는 설정 추가 가능
 
         // http.oauth2Login();
