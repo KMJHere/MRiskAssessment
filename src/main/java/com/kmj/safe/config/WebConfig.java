@@ -13,7 +13,7 @@ public class WebConfig implements WebMvcConfigurer {
 		// TODO Auto-generated method stub
 		registry.addInterceptor(new LoginInterceptor())
 					.addPathPatterns("/**")
-					.excludePathPatterns("/login/**", "/css/**");
+					.excludePathPatterns("/login/**", "/css/**", "/img/**", "/js/**", "/plugin/**", "/font/**");
 	}
 	
 	

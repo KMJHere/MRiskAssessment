@@ -1,8 +1,14 @@
 @charset "UTF-8";
 
+@font-face {
+  font-family : '나눔고딕';
+  src : url(../font/NanumGothic-Regular.ttf)
+}
+
 html,
 body {
   height: 100%;
+  font-family : '나눔고딕';
 }
 
 body {
@@ -32,4 +38,8 @@ body {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+
+.form-signin .btn-primary {
+	font-weight: bold;
 }
