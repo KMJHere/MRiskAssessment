@@ -17,11 +17,6 @@ public class MainController {
 	
 	@RequestMapping("/")
 	public String loadMain(Model model) {
-		return "main";
+		return "/user/main";
 	}
-	
-	@RequestMapping("/login")
-	public String login() {
-		return "login";
-	}	
 }

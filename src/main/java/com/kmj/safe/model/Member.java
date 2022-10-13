@@ -1,12 +1,19 @@
 package com.kmj.safe.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.util.Date;
 
+@Builder
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Member {
 	private Integer COMPANY_ID;  // 회사ID
-	private Integer USER_NO;  // 사용자번호
+	private Integer USER_NO;  // 사용자번호 
 	private String USER_ID;  // 사용자ID
 	private String PASS_ID;  // 암호
 	private String USER_NM;  // 사용자명

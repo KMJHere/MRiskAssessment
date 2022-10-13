@@ -1,5 +1,8 @@
 package com.kmj.safe.service;
 
-public interface MainService {
+import org.springframework.stereotype.Service;
+
+@Service
+public class MainService {
 
 }
