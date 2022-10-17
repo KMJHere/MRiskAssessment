@@ -6083,7 +6083,7 @@ button.close {
   tr.visible-md {
     display: table-row !important;
   }
-  th.visible-md, 
+  th.visible-md,
   td.visible-md {
     display: table-cell !important;
   }

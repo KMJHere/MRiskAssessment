@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>MRiskAssessment Login</title>
+        <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="/css/mrastyle.css"/>
+        <script type="text/javascript" src="/js/bootstrap.min.js"></script> 
+        <script type="text/javascript" src="/js/jquery-3.6.1.min.js"></script>
+        
+        <!-- Favicon -->
+		<link rel="shortcut icon" href="favicon.ico">
+		
+		<!-- CSS Global Compulsory -->
+		<link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="assets/css/style.css">
+		
+		<!-- CSS Implementing Plugins -->
+		<link rel="stylesheet" href="assets/plugins/line-icons/line-icons.css">
+		<link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.min.css">
+		
+		<!-- CSS Page Style -->    
+		<link rel="stylesheet" href="assets/css/pages/page_log_reg_v1.css">
+		
+		<!-- CSS Theme -->    
+		<link rel="stylesheet" href="assets/css/theme-colors/default.css">
+		
+		<!-- CSS Customization -->
+		<link rel="stylesheet" href="assets/css/custom.css">
+		<style>
+			body {
+				background-color: #f5f5f5;
+			}
+			
+			div .container content {
+				background-color: #f5f5f5;	
+			}
+		</style>
+    </head>
+    <body>
+    <div class="wrapper">
+    
+
+    <!--=== Breadcrumbs ===-->
+    <div class="breadcrumbs">
+        <div class="container">
+            <h1 class="pull-left"><img id="logo-header" src="/img/logo/logo3.png" alt="Logo" style="width:100px;heigh:80px;"></h1>
+            <ul class="pull-right breadcrumb">
+                <li><a href="/login">로그인</a></li>
+                <li class="active">회원가입</li>
+            </ul>
+        </div><!--/container-->
+    </div><!--/breadcrumbs-->
+    <!--=== End Breadcrumbs ===-->
+
+    <!--=== Content Part ===-->
+    <div class="container content">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                <form class="reg-page">
+                    <div class="reg-header">
+                        <h2>회원가입</h2>
+                        <p>Already Signed Up? Click <a href="page_login.html" class="color-green">Sign In</a> to login your account.</p>                    
+                    </div>
+                    <label>아이디 <span class="color-red">*</span></label>
+                    <input type="text" class="form-control margin-bottom-20">
+					<label>이메일 <span class="color-red">*</span></label>
+                    <input type="text" class="form-control margin-bottom-20">	
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label>비밀번호 <span class="color-red">*</span></label>
+                            <input type="password" class="form-control margin-bottom-20">
+                        </div>
+                        <div class="col-sm-6">
+                            <label>비밀번호 확인 <span class="color-red">*</span></label>
+                            <input type="password" class="form-control margin-bottom-20">
+                        </div>
+                    </div>
+                    <label>이름 <span class="color-red">*</span></label>
+                    <input type="text" class="form-control margin-bottom-20">
+                    <label>회사 및 대표현장 <span class="color-red">*</span></label>
+                    <input type="text" class="form-control margin-bottom-20">
+                    <label>전화번호</label>
+                    <input type="text" class="form-control margin-bottom-20">
+                    <label>휴대전화번호</label>
+                    <input type="text" class="form-control margin-bottom-20">
+                    <label>직위</label>
+                    <input type="text" class="form-control margin-bottom-20">
+                    <hr>
+                    <div class="row">
+                        <div class="col-lg-6 checkbox">
+                            <label>
+                                <input type="checkbox"> 
+                                I read <a href="page_terms.html" class="color-green">Terms and Conditions</a>
+                            </label>                        
+                        </div>
+                        <div class="col-lg-6 text-right">
+                            <button class="btn-u" type="submit">가입요청</button>                        
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div><!--/container-->		
+    <!--=== End Content Part ===-->
+
+        
+    </div>     
+    <!--=== End Footer Version 1 ===-->
+
+</body>
+</html>

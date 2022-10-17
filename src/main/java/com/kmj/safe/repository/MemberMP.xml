@@ -10,7 +10,67 @@
 		And USER_ID = #{USER_ID} 
 	</select>
 
+	<insert id="createMember">
+		Insert Into TCC_EMPLOYEE
+		(
+			COMPANY_ID,
+			USER_NO,
+			USER_ID,
+			PASS_ID,
+			USER_NM,
+			TEL_NO,
+			MOBILE_NO,
+			EMAIL,
+			USER_GB,
+			POSITION_CD,
+			USE_TF,
+			PROJ_CODE,
+			CRTUSERNO,
+			CRTDATE,
+			MODUSERNO,
+			MODDATE
+		) Values (
+			#{COMPANY_ID},
+			SSF_EMPLOYEE.Nextval,
+			#{USER_ID},
+			#{PASS_ID},
+			#{USER_NM},
+			#{TEL_NO},
+			#{MOBILE_NO},
+			#{EMAIL},
+			'T',
+			#{POSITION_CD},
+			'T',
+			#{PROJ_CODE},
+			#{SESSION_USER_NO},
+			Sysdate,
+			#{SESSION_USER_NO},
+			Sysdate
+		)
+	</insert>	
+	
+	<update id="updateMember">
+		Update TCC_EMPLOYEE
+		Set
+			USER_NM = #{USER_NM}, 
+			TEL_NO = #{TEL_NO},
+			MOBILE_NO = #{MOBILE_NO},
+			EMAIL = #{EMAIL},
+			USER_GB = #{USER_GB},
+			POSITION_CD = #{POSITION_CD},
+			USE_TF = #{USE_TF},
+			PROJ_CODE = #{PROJ_CODE},
+			CRTUSERNO = #{SESSION_USER_NO},
+			CRTDATE = Sysdate,
+			MODUSERNO = #{SESSION_USER_NO},
+			MODDATE = Sysdate
+		Where 1 = 1
+		And COMPANY_ID = #{COMPANY_ID}
+		And USER_NO = #{USER_NO}	
+	</update>
 
+	<delete id = "deleteMember">
+	</delete>
 
 
 

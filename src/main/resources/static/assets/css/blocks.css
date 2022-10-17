@@ -980,11 +980,11 @@
 }
 
 .flat-testimonials .flat-testimonials-in p:before {
-  content: "��";
+  content: "“";
   padding-right: 5px;
 }
 
 .flat-testimonials .flat-testimonials-in p:after {
-  content: "��";
+  content: "”";
   padding-left: 5px;
 }

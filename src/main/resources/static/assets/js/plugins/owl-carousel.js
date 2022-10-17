@@ -50,7 +50,6 @@ var OwlCarousel = function () {
 			jQuery(".owl-slider-v4").owlCarousel({
                 items:3,
                 itemsDesktop : [1000,3],
-                itemsDesktopSmall : [900,3],
                 itemsTablet : [600,2],
                 itemsMobile : [479,1]
             });
@@ -60,9 +59,7 @@ var OwlCarousel = function () {
             jQuery(document).ready(function() {
             var owl = jQuery(".owl-slider-v5");
                 owl.owlCarousel({
-                	pagination: false,
-                    items: 1,
-                    autoPlay : 7000,
+                    items:1,
                     itemsDesktop : [1000,1],
                     itemsDesktopSmall : [900,1],
                     itemsTablet: [600,1],
