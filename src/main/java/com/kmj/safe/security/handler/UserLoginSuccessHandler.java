@@ -14,6 +14,8 @@ public class UserLoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandl
 	@Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
 		HttpSession session = request.getSession();
+		
+		System.out.println("username? " + request.getAttribute("username"));
     	session.setAttribute("login", "success");
     	response.sendRedirect("/");
     }

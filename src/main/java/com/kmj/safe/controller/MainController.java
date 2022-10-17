@@ -18,7 +18,6 @@ public class MainController {
 	
 	@RequestMapping("/")
 	public String loadMain(Model model) {
-		return "/user/main";
+		return "main";
 	}
-
 }

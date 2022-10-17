@@ -3,6 +3,7 @@ package com.kmj.safe.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,6 +15,8 @@ import com.kmj.safe.repository.MemberMP;
 public class MemberService {
     @Autowired
 	private MemberMP memberMP;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     public List<Member> getMemberList() {
         return memberMP.getMemberList();
@@ -24,6 +27,10 @@ public class MemberService {
     }
 
     public int createMember(Member member) {
+    	String encPassId = passwordEncoder.encode(member.getPASS_ID());
+    	
+    	member.setPASS_ID(encPassId);
+    	
         return memberMP.createMember(member);
     }
 

@@ -10,6 +10,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.kmj.safe.model.Member;
@@ -19,7 +20,7 @@ import com.kmj.safe.service.MemberService;
 public class MraUserDetailsService implements UserDetailsService {
     @Autowired
     private MemberService memberService;
-	
+   
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
     	Member member = memberService.getMember(username);
     	
