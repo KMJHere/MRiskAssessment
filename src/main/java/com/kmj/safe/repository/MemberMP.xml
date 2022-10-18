@@ -3,7 +3,18 @@
 <mapper namespace="com.kmj.safe.repository.MemberMP">
 	<select id="getMember" resultType="com.kmj.safe.model.Member"> 
 		Select
-			*
+			COMPANY_ID,  -- 회사ID
+			USER_NO,  -- 사용자번호 
+			USER_ID,  -- 사용자ID
+			PASS_ID,  -- 암호
+			USER_NM,  -- 사용자명
+			TEL_NO,  -- 전화번호
+			MOBILE_NO,  -- 휴대폰번호
+			EMAIL,  -- 이메일ID
+			USER_GB,  -- 사용자구분 [ADMIN:관리자 NORMAL:일반사용자 GUEST:게스트]
+			POSITION_CD,  -- 직위
+			USE_TF,  -- 사용여부 [T, F]
+			PROJ_CODE  -- 대표현장
 		From 
 			TCC_EMPLOYEE
 		Where 1 = 1

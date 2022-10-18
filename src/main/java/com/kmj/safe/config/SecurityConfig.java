@@ -39,7 +39,12 @@ public class SecurityConfig {
         		.failureHandler(failureHandler()) 
 				.loginProcessingUrl("/login_proc") //post mapping 주소, security 처리 
 				.usernameParameter("id")
-				.passwordParameter("pw").permitAll());
+				.passwordParameter("pw").permitAll())
+        	.rememberMe()
+        		.rememberMeParameter("remember-me")
+        		.userDetailsService(userDetailsService);
+        
+        
 
         http.csrf().disable(); // csrf 토큰 비활성화
         http.logout(); // invalidatedHttpSession() deleteCookies() 쿠키나 세션을 무효화 시키는 설정 추가 가능
