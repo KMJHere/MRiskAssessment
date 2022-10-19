@@ -15,8 +15,8 @@ public class CommonService {
 	@Autowired
 	private CommonMP commonMP;
 
-	public List<Map<String, Object>> selectCompanyLst(String asCompanyName) throws Exception {
-		List<Map<String, Object>> lResult = commonMP.selectCompanyLst(asCompanyName);
+	public List<Map<String, Object>> selectCompanyLst(String asCompanyName, int anDtStart, int anDtLength) throws Exception {
+		List<Map<String, Object>> lResult = commonMP.selectCompanyLst(asCompanyName, anDtStart, anDtLength);
 		
 		return lResult;
 	}

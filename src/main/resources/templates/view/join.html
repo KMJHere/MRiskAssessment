@@ -6,31 +6,50 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>MRiskAssessment Join</title>
-        <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
+        <!-- <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/> -->
         <link rel="stylesheet" type="text/css" href="/css/mrastyle.css"/>
-        <script type="text/javascript" src="/js/bootstrap.min.js"></script> 
-        <script type="text/javascript" src="/js/jquery-3.6.1.min.js"></script>
         
         <!-- Favicon -->
 		<link rel="shortcut icon" href="favicon.ico">
 		
 		<!-- CSS Global Compulsory -->
-		<link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
-		<link rel="stylesheet" href="assets/css/style.css">
+		 <link rel="stylesheet" href="/assets/plugins/bootstrap/css/bootstrap.min.css"> 
+		<link rel="stylesheet" href="/assets/css/style.css">
 		
 		<!-- CSS Implementing Plugins -->
-		<link rel="stylesheet" href="assets/plugins/line-icons/line-icons.css">
-		<link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.min.css">
-		<link rel="stylesheet" href="assets/plugins/sky-forms/version-2.0.1/css/custom-sky-forms.css">
+		<link rel="stylesheet" href="/assets/plugins/line-icons/line-icons.css">
+		<link rel="stylesheet" href="/assets/plugins/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/assets/plugins/sky-forms/version-2.0.1/css/custom-sky-forms.css">
 		
 		<!-- CSS Page Style -->    
-		<link rel="stylesheet" href="assets/css/pages/page_log_reg_v1.css">
+		<link rel="stylesheet" href="/assets/css/pages/page_log_reg_v1.css">
 		
 		<!-- CSS Theme -->    
-		<link rel="stylesheet" href="assets/css/theme-colors/default.css">
+		<link rel="stylesheet" href="/assets/css/theme-colors/default.css">
 		
 		<!-- CSS Customization -->
-		<link rel="stylesheet" href="assets/css/custom.css">
+		<link rel="stylesheet" href="/assets/css/custom.css">
+		
+		<!-- Datatables -->
+		<link rel="stylesheet" href="/assets/css/custom.css">
+		<link rel="stylesheet" href="/plugin/Datatables/css/dataTables.bootstrap.css">
+		<link rel="stylesheet" href="/plugin/Datatables/css/dataTables.responsive.css">
+		
+		
+		<!-- <script type="text/javascript" src="/js/jquery-3.6.1.min.js"></script> -->
+        <!-- <script type="text/javascript" src="/js/bootstrap.min.js"></script> --> 
+        <!-- JS Global Compulsory -->           
+		 <script type="text/javascript" src="/assets/plugins/jquery/jquery.min.js"></script>
+		<script type="text/javascript" src="/assets/plugins/jquery/jquery-migrate.min.js"></script>
+		 <script type="text/javascript" src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script> 
+		<!-- JS Implementing Plugins --> 
+		<script type="text/javascript" src="/assets/plugins/back-to-top.js"></script>
+		<!-- JS Page Level -->           
+		<script type="text/javascript" src="/assets/js/app.js"></script>
+		<script type="text/javascript" src="/assets/js/app.js"></script>
+		<script type="text/javascript" src="/plugin/Datatables/js/jquery.dataTables.js"></script>
+		<script type="text/javascript" src="/plugin/Datatables/js/dataTables.bootstrap.js"></script>
+		<script type="text/javascript" src="/plugin/Datatables/js/dataTables.responsive.min.js"></script>
 		<style>
 			body {
 				background-color: #f5f5f5;
@@ -45,7 +64,7 @@
     	<div class="wrapper">   
 		    <div class="breadcrumbs">
 		        <div class="container">
-		            <h1 class="pull-left"><img id="logo-header" src="/img/logo/logo3.png" alt="Logo" style="width:100px;heigh:80px;"></h1>
+		            <h1 class="pull-left"><img id="logo-header" src="/img/logo/logo3.png" alt="Logo" style="width:100px;"></h1>
 		            <ul class="pull-right breadcrumb">
 		                <li><a href="/login">로그인</a></li>
 		                <li class="active">회원가입</li>
@@ -55,7 +74,7 @@
 		    <div class="container content">
 		        <div class="row">
 		            <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-		                <form class="reg-page sky-form">
+		                <form class="reg-page">
 		                    <div class="reg-header">
 		                        <h2>회원가입</h2>
 		                        <p>Already Signed Up? Click <a href="/login" class="color-blue">Sign In</a> to login your account.</p>                    
@@ -77,19 +96,23 @@
 		                    <label>이름 <span class="color-red">*</span></label>
 		                    <input type="text" class="form-control margin-bottom-20">
 		                    <label>회사 및 대표현장 <span class="color-red">*</span></label>
-		                    <div class="row">
-		                    	<section class="col col-6">
-		                    		<label class="input">
-		                                <i id="searchCompanyId" class="icon-append fa fa-search"></i>
-		                                <input type="text" name="companyId" placeholder="회사선택" class="form-control">
-		                            </label>
-		                    	</section>
-		                    	<section class="col col-6">
-		                    		<label class="input">
-		                                <i id="searchProjCode" class="icon-append fa fa-search"></i>
-		                                <input type="text" name="projCode" placeholder="현장선택" class="form-control">
-		                            </label>
-		                    	</section>
+		                    <div class="row margin-bottom-20">
+		                        <div class="col-sm-6">
+		                            <div class="input-group">
+		                                <input type="text" class="form-control">
+		                                <span class="input-group-btn">
+		                                    <button id="searchCompanyId" class="btn btn-danger" type="button"><i class="icon-append fa fa-search"></i></button>
+		                                </span>
+		                            </div>
+		                        </div>
+		                        <div class="col-sm-6">
+		                           <div class="input-group">
+		                                <input type="text" class="form-control">
+		                                <span class="input-group-btn">
+		                                    <button id="searchProjCode" class="btn btn-danger" type="button"><i class="icon-append fa fa-search"></i></button>
+		                                </span>
+		                            </div>
+		                        </div>
 		                    </div>
 		                    <label>전화번호</label>
 		                    <input type="text" class="form-control margin-bottom-20">
@@ -97,12 +120,14 @@
 		                    <input type="text" class="form-control margin-bottom-20">
 		                    <label>직위</label>
 		                    <div class="row">
-		                    	<section class="col">
-		                    		<label class="input">
-				                         <i id="searchPosiCd"class="icon-append fa fa-search"></i>
-				                         <input type="text" name="posiCd" placeholder="직위선택" class="form-control">
-		                     		</label>
-		                    	</section>
+		                    <div class="col-sm-12"> 	
+                    		<div class="input-group">
+                                <input type="text" class="form-control">
+                                <span class="input-group-btn">
+                                    <button id="searchPosiCd" class="btn btn-danger" type="button"><i class="icon-append fa fa-search"></i></button>
+                                </span>
+                            </div>
+		                    </div>	
 		                    </div>
 		                    <hr>
 		                    <div class="row">
@@ -119,29 +144,110 @@
 		                </form>
 		            </div>
 		        </div>
-		    </div>		
-	    </div>     
-	<script th:inline="javascript">
-		$(function() {
-			// 회사검색
-			$("#searchCompanyId").on("click", function(e) {
-				
-			});
-			
-			// 현장검색
-			$("#searchProjCode").on("click", function(e) {
-				
-			});
-			
-			// 직위검색
-			$("#searchPosiCd").on("click", function(e) {
-				
-			});
-			
-			
-		});	
+		    </div>	
+	    </div>
+	    
+	     
+	    <div id="divModalSearchCompanyId" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalSearchCts" aria-hidden="true">
+			<div class="modal-dialog modal-md">
+				<div class="modal-content">
+					<div class="modal-header"> 
+						<h4 class="modal-title" style="font-weight:bolder">회사검색</h4>
+						<button aria-hidden="true" data-dismiss="modal" class="close" type="button">&times;</button>
+					</div>
+					<div class="modal-body" style="padding:20px">
+						<div class="profile">	            	 
+					        	<div class="profile-body">
+						        	<div class="alert alert-warning fade in" style="margin-bottom:0px;">
+										<form action="" class="sky-form form-cond" style="border:none;">																
+											<div class="row">						
+												<div class="col-md-12">
+													<label class="label">회사명</label> 			                    
+								                    <div id ="idDivPerformDt" class="row sky-form" style="border:none;margin:0 -13px;">
+							                            <input type="text" name="companyName" id="companyName">
+								                    </div>  
+												</div>
+											</div>						                    			 
+										</form>
+									</div>
+								</div>
+		                	</div>
+						<div class="profile">	            	 
+					        	<div class="profile-body">
+									<div id="idDivCompanyLst" class="listTable" style="width:100%; height:496px;"> 
+										<table class="idTbCompanyLst table table-bordered dt-responsive" cellspacing="0" width="100%">				
+											<thead>
+												<tr>			
+													<th>회사명</th>																												
+													<th>사업자번호</th>
+												</tr>										
+											</thead>																								
+										</table>
+									</div>
+					        	</div>
+						    </div>	
+					</div>				
+					<div class="modal-footer">
+						<button id="idBtnConfrim" class="btn-u btn-u-blue" type="button">확인</button>
+						<button data-dismiss="modal" class="btn-u btn-u-default" type="button">닫기</button>						
+					</div>
+				</div>
+			</div>	
+		</div>
 		
-	
-	</script>
+		
+		         
+		<script th:inline="javascript">
+			$(function() {
+				// 회사검색
+				$("#searchCompanyId").on("click", function(e) {
+					
+					$("#divModalSearchCompanyId").modal("show");
+					drawCompanyLst.draw();
+				});
+				
+				// 현장검색
+				$("#searchProjCode").on("click", function(e) {
+				
+				});
+				
+				// 직위검색
+				$("#searchPosiCd").on("click", function(e) {
+					
+				});	
+				
+				// 회사 데이터 가져오기
+				var drawCompanyLst = $("#idDivCompanyLst .idTbCompanyLst").DataTable({
+					processing: true,
+					serverSide: true,
+					ajax: {
+						type: "post",
+						url: "/join/searchCompanyId",
+						data: function(dat) {
+							dat.companyName = ""
+						}
+					},
+					columns: [
+						{data: "COMPANY_NAME"},
+						{data: "BIZ_NO"}
+					],
+					pagingType: "simple_numbers",
+					lengthChange: false,
+					pageLength: 10,
+					info: false,
+					ordering: false,
+					searching: false,
+					language: {
+						"zeroRecords": "자료가 없습니다."
+					}
+				});
+			});	
+		
+			
+			
+			
+			
+			
+		</script>
 </body>
 </html>

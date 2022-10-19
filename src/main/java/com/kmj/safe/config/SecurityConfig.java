@@ -26,12 +26,12 @@ public class SecurityConfig {
     
     @Bean
     public WebSecurityCustomizer configure() {
-    	return (web) -> web.ignoring().antMatchers("/css/**", "/img/**", "/js/**", "/plugin/**", "/font/**");
+    	return (web) -> web.ignoring().antMatchers("/css/**", "/img/**", "/js/**", "/plugin/**", "/font/**", "/assets/**");
     }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeRequests(auth -> auth.antMatchers("/login").permitAll()
+        http.authorizeRequests(auth -> auth.antMatchers("/login/**", "/join/**").permitAll()
 				.anyRequest().authenticated());
                 
         http.formLogin(login ->	login.loginPage("/login")

@@ -8,8 +8,6 @@
         <title>MRiskAssessment Login</title>
         <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
         <link rel="stylesheet" type="text/css" href="/css/mrastyle.css"/>
-        <script type="text/javascript" src="/js/bootstrap.min.js"></script> 
-        <script type="text/javascript" src="/js/jquery-3.6.1.min.js"></script>
         <style>
 		    .bd-placeholder-img {
 			  font-size: 1.125rem;
@@ -96,6 +94,8 @@
 				font-weight: bold;
 			}
         </style>
+        <script type="text/javascript" src="/js/bootstrap.min.js"></script> 
+        <script type="text/javascript" src="/js/jquery-3.6.1.min.js"></script>
     </head>
     
     <body class="text-center">
@@ -130,6 +130,16 @@
 		    </div>
 		</main>
     </body>
+    <!-- JS Global Compulsory -->           
+	<script type="text/javascript" src="/assets/plugins/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="/assets/plugins/jquery/jquery-migrate.min.js"></script>
+	<script type="text/javascript" src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<!-- JS Implementing Plugins -->
+	<script type="text/javascript" src="/assets/plugins/back-to-top.js"></script>
+	<!-- JS Customization -->
+	<script type="text/javascript" src="/assets/js/custom.js"></script>
+	<!-- JS Page Level -->           
+	<script type="text/javascript" src="/assets/js/app.js"></script>
     <script th:inline="javascript">
     	$("#btnLogin").on("click", function(e) {
     		$("#loginForm").submit();

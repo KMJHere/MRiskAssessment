@@ -10,11 +10,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kmj.safe.model.Member;
+import com.kmj.safe.service.CommonService;
 import com.kmj.safe.service.MemberService;
-import com.kmj.safe.util.DatatableUtil;
+import com.kmj.safe.common.DatatableUtil;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -25,13 +27,16 @@ public class JoinController {
 	@Autowired
 	private MemberService memberService;
 	@Autowired
+	private CommonService commonService;
+	@Autowired
 	private DatatableUtil datatableUtil;
 	
 	@GetMapping("/join")
 	public void join() {
 	}
 	
-	@GetMapping("/searchCompanyId")
+	@PostMapping("/join/searchCompanyId")
+	@ResponseBody
 	public Map<String, Object> searchCompanyId(@RequestParam("draw") String asDtDraw,
 			@RequestParam("start") int anDtStart,
 			@RequestParam("length") int anDtLength,
@@ -39,17 +44,15 @@ public class JoinController {
 		Map<String, Object> mRtnDat = new HashMap<>();
 		
 		try {
-			// 회사 목록 서비스 ..
-			mRtnDat = datatableUtil.convertData(null, asDtDraw);
+			mRtnDat = datatableUtil.convertData(commonService.selectCompanyLst(asCompanyName, anDtStart, anDtLength), asDtDraw);
 		} catch(Exception e) {
 			logger.error("JoinControllerError: " + e);
 		}
 		
 		return mRtnDat;
-		
 	}
 	
-	@PostMapping("/joinRegis")
+	@PostMapping("/join/joinRegis")
 	public String joinRegister(Member member, RedirectAttributes rttr) {
 		log.info("Member?" + member);
 		

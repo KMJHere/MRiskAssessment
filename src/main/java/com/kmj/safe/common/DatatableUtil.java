@@ -1,4 +1,4 @@
-package com.kmj.safe.util;
+package com.kmj.safe.common;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
@@ -18,7 +18,7 @@ public class DatatableUtil {
 		try {
 			HashMap<String, Object> mCvtDat = new HashMap<>();
 			
-			for(Map<String, Object> md : alDat) {	
+			for(Map<String, Object> md : alDat) {
 				md.put("DT_RowId", "RID_" + md.get("SORT_NO"));	
 			}
 			

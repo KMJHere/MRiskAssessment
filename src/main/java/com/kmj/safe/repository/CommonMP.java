@@ -4,9 +4,9 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Mapper
 public interface CommonMP {
-	List<Map<String, Object>> selectCompanyLst(@Param("asCompanyName") String COMPANY_NAME);
+	List<Map<String, Object>> selectCompanyLst(@RequestParam("asCompanyName") String companyName, @RequestParam("anDtStart") int dtStart, @RequestParam("anDtLength") int dtLength) throws Exception;
 }
