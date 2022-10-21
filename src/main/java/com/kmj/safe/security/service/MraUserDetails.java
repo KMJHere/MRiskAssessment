@@ -23,7 +23,7 @@ public class MraUserDetails implements UserDetails {
     	this.COMPANY_ID = companyid;
     	this.USER_NO = userno;
     	this.USER_NM = usernm;
-    	this.USER_ID = username; 
+    	this.USER_ID = username;  
     	this.PASS_ID = password; 
     }
     
