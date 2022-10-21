@@ -24,7 +24,7 @@ public class MraUserDetails implements UserDetails {
     	this.USER_NO = userno;
     	this.USER_NM = usernm;
     	this.USER_ID = username;
-    	this.PASS_ID = password;
+    	this.PASS_ID = password; 
     }
     
     @Override
