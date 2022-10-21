@@ -46,7 +46,41 @@ public class JoinController {
 		try {
 			mRtnDat = datatableUtil.convertData(commonService.selectCompanyLst(asCompanyName, anDtStart, anDtLength), asDtDraw);
 		} catch(Exception e) {
-			logger.error("JoinControllerError: " + e);
+			logger.error("searchCompanyIdError: " + e);
+		}
+		
+		return mRtnDat;
+	}
+	
+	@PostMapping("/join/searchProjCode")
+	@ResponseBody
+	public Map<String, Object> searchProjCode(@RequestParam("draw") String asDtDraw,
+			@RequestParam("start") int anDtStart,
+			@RequestParam("length") int anDtLength,
+			@RequestParam(value="companyId", required=false) Integer asCompanyId,
+			@RequestParam("projName") String asProjName) throws Exception {
+		Map<String, Object> mRtnDat = new HashMap<>();
+		
+		try {
+			mRtnDat = datatableUtil.convertData(commonService.selectProjLst(asCompanyId, asProjName, anDtStart, anDtLength), asDtDraw);
+		} catch(Exception e) {
+			logger.error("searchProjCodeError: " + e);
+		}
+		
+		return mRtnDat;
+	}
+	
+	@GetMapping("/join/searchPosiCode")
+	@ResponseBody
+	public Map<String, Object> searchPosiCode(
+			@RequestParam("grpCodeNm") String asGrpCodeNm) throws Exception {
+		Map<String, Object> mRtnDat = new HashMap<>();
+		
+		try {
+			mRtnDat.put("data", commonService.selectPosiLst(asGrpCodeNm));
+			mRtnDat.put("bSuccess", true);
+		} catch(Exception e) {
+			logger.error("searchPosiCodeError: " + e);
 		}
 		
 		return mRtnDat;
@@ -62,6 +96,6 @@ public class JoinController {
 		
 		rttr.addFlashAttribute("USER_NO", userNo);
 		
-		return "redirect:/login";
+		return "redirect:/join";
 	}
 }

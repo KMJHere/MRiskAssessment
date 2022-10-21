@@ -12,11 +12,17 @@ import lombok.Builder;
 
 @SuppressWarnings("serial")
 public class MraUserDetails implements UserDetails {
+	private Integer COMPANY_ID;
+	private Integer USER_NO;
+	private String USER_NM;
 	private String USER_ID;
 	private String PASS_ID;
     
     @Builder
-    public MraUserDetails(String username, String password, List<GrantedAuthority> authorities) {
+    public MraUserDetails(Integer companyid, Integer userno, String usernm, String username, String password, List<GrantedAuthority> authorities) {
+    	this.COMPANY_ID = companyid;
+    	this.USER_NO = userno;
+    	this.USER_NM = usernm;
     	this.USER_ID = username;
     	this.PASS_ID = password;
     }
@@ -36,6 +42,18 @@ public class MraUserDetails implements UserDetails {
     @Override
     public String getUsername() {
         return USER_ID;
+    }
+    
+    public Integer getUserno() {
+    	return USER_NO;
+    }
+    
+    public Integer getCompanyId() {
+    	return COMPANY_ID;
+    }
+    
+    public String getUserNm() {
+    	return USER_NM;
     }
 
     @Override

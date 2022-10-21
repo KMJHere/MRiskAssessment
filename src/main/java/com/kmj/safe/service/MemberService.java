@@ -29,6 +29,8 @@ public class MemberService {
     public int createMember(Member member) {
     	String encPassId = passwordEncoder.encode(member.getPASS_ID());
     	
+    	System.out.println("encPassId" + encPassId);
+    	
     	member.setPASS_ID(encPassId);
     	
         return memberMP.createMember(member);

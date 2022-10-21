@@ -40,4 +40,46 @@
 		Where 1 = 1
 		And x.RN Between #{dtStart} + 1 And #{dtStart} + #{dtLength}
 	</select>
+	
+	<select id="selectProjLst"  resultType="Map"> 
+		Select
+			x.TOT_CN,
+			x.FILTERED_CN,
+			x.RN SORT_NO,
+			x.COMPANY_ID,
+			x.PROJ_CODE,
+			x.PROJ_NAME,
+			x.USE_TF,
+			x.RMK
+		From
+			(
+				Select
+					Count(*) Over() TOT_CN,
+					Count(*) Over() FILTERED_CN,
+					Row_Number() Over(Order By PROJ_CODE) RN,
+					COMPANY_ID,  -- 회사ID
+					PROJ_CODE,  -- 현장코드
+					PROJ_NAME,  -- 현장명
+					USE_TF,  -- 사용여부 [T, F]
+					RMK  -- 비고
+				From	
+					TCC_PROJ_CODE 
+				Where 1 = 1
+				And COMPANY_ID = #{companyId}
+				And PROJ_NAME Like '%' || #{projName} || '%'
+			) x
+		Where 1 = 1
+		And x.RN Between #{dtStart} + 1 And #{dtStart} + #{dtLength}
+	</select>
+	
+	<select id="selectPosiLst"  resultType="Map">
+		Select
+			x.CODE_NM,
+			x.CODE_DTL_NM,
+			x.USE_TF
+		From
+			VCM_GROUP_CODE x
+		Where 1 = 1
+		And x.CODE_NM = #{grpCodeNm}
+	</select>
 </mapper>

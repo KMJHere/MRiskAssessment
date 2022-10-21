@@ -20,4 +20,16 @@ public class CommonService {
 		
 		return lResult;
 	}
+	
+	public List<Map<String, Object>> selectProjLst(Integer asCompanyId, String asProjName, int anDtStart, int anDtLength) throws Exception {
+		List<Map<String, Object>> lResult = commonMP.selectProjLst(asCompanyId, asProjName, anDtStart, anDtLength);
+		
+		return lResult;
+	}
+	
+	public List<Map<String, Object>> selectPosiLst(String asGrpCodeNm) throws Exception {
+		List<Map<String, Object>> lResult = commonMP.selectPosiLst(asGrpCodeNm);
+		
+		return lResult;
+	}
 }
