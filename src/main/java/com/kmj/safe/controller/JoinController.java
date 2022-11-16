@@ -96,6 +96,6 @@ public class JoinController {
 		
 		rttr.addFlashAttribute("USER_NO", userNo);
 		
-		return "redirect:/join";
+		return "redirect:/login";
 	}
 }

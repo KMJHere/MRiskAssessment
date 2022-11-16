@@ -13,7 +13,7 @@ import com.kmj.safe.repository.MemberMP;
 @Service
 @Transactional
 public class MemberService {
-    @Autowired
+	@Autowired
 	private MemberMP memberMP;
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -26,7 +26,7 @@ public class MemberService {
         return memberMP.getMember(USER_ID);
     }
 
-    public int createMember(Member member) {
+    public int createMember(Member member) {   	
     	String encPassId = passwordEncoder.encode(member.getPASS_ID());
     	
     	System.out.println("encPassId" + encPassId);
