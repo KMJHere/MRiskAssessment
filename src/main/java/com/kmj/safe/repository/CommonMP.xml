@@ -74,6 +74,7 @@
 	
 	<select id="selectPosiLst"  resultType="Map">
 		Select
+			x.SCM_DTL_SEQ,
 			x.CODE_NM,
 			x.CODE_DTL_NM,
 			x.USE_TF

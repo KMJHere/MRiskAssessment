@@ -19,44 +19,44 @@ import lombok.Data;
 @Scope(value = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
 @Component
 public class UserInfo {
-	private String COMPANY_ID;
+	private String SESSION_COMPANY_ID;
 	
-	private String USER_NO;
+	private String SESSION_USER_NO;
 	
-	private String USER_ID;
+	private String SESSION_USER_ID;
 	
-	private String USER_NM;
+	private String SESSION_USER_NM;
 	
 	public Map<String, Object> getFixData() {
 		Map<String, Object> mData = new HashMap<>();
 		
-		mData.put("SESSION_COMPANY_ID", this.getCOMPANY_ID());
-		mData.put("SESSION_USER_NO", this.getUSER_NO());
-		mData.put("SESSION_USER_ID", this.getUSER_ID());
-		mData.put("SESSION_USER_NM", this.getUSER_NM());
+		mData.put("SESSION_COMPANY_ID", this.getSESSION_COMPANY_ID());
+		mData.put("SESSION_USER_NO", this.getSESSION_USER_NO());
+		mData.put("SESSION_USER_ID", this.getSESSION_USER_ID());
+		mData.put("SESSION_USER_NM", this.getSESSION_USER_NM());
 		
 		return mData;
 	}
 	
 	public void setSessionData(HttpSession session) {
-		this.setCOMPANY_ID((String)session.getAttribute("COMPANY_ID"));
-		this.setUSER_NO((String)session.getAttribute("USER_NO"));
-		this.setUSER_ID((String)session.getAttribute("USER_ID"));
-		this.setUSER_NM((String)session.getAttribute("USER_NM"));
+		this.setSESSION_COMPANY_ID((String)session.getAttribute("SESSION_COMPANY_ID"));
+		this.setSESSION_USER_NO((String)session.getAttribute("SESSION_USER_NO"));
+		this.setSESSION_USER_ID((String)session.getAttribute("SESSION_USER_ID"));
+		this.setSESSION_USER_NM((String)session.getAttribute("SESSION_USER_NM"));
 	}
 	
 	public void init() {
-		this.setCOMPANY_ID(null);
-		this.setUSER_NO(null);
-		this.setUSER_ID(null);
-		this.setUSER_NM(null);
+		this.setSESSION_COMPANY_ID(null);
+		this.setSESSION_USER_NO(null);
+		this.setSESSION_USER_ID(null);
+		this.setSESSION_USER_NM(null);
 	}
 	
 	public Map<String, Object> toMapping(Map<String, Object> amData) {
-		amData.put("SESSION_COMPANY_ID", this.getCOMPANY_ID());
-		amData.put("SESSION_USER_NO", this.getUSER_NO());
-		amData.put("SESSION_USER_ID", this.getUSER_ID());
-		amData.put("SESSION_USER_NM", this.getUSER_NM());
+		amData.put("SESSION_COMPANY_ID", this.getSESSION_COMPANY_ID());
+		amData.put("SESSION_USER_NO", this.getSESSION_USER_NO());
+		amData.put("SESSION_USER_ID", this.getSESSION_USER_ID());
+		amData.put("SESSION_USER_NM", this.getSESSION_USER_NM());
 		
 		return amData;
 	}

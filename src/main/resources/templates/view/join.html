@@ -478,6 +478,11 @@
 					}
 				});
 			});	
+			
+			$("#idDivProjLst").on( 'click', 'tbody td', function () { 
+				alert(1); 
+				drawProjLst.cell( this ).edit();
+			} );
 		</script>
 </body>
 </html>
