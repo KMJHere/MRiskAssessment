@@ -110,23 +110,11 @@
 		      <input type="password" class="form-control" name="pw" id="floatingPassword" placeholder="Password">
 		      <label for="floatingPassword">Password</label>
 		    </div>
-		
-		    <div class="checkbox mb-3">
-		      <label>
-		        <input name="remember-me" type="checkbox" value="remember-me"> Remember me
-		      </label>
-		    </div>
-		    
-		    
 		  </form>
 		  <div> 
 		  		<table>
 		  			<tr>	
-		    			<button id="btnLogin" class="w-50 btn btn-lg btn-primary" type="submit">로그인</button>
-		    			<button id="btnJoin" onclick="location.href='/join'" class="w-50 btn btn-lg btn-warning">회원가입</button>
-		    		</tr>
-		    		<tr>
-		    			<button id="btnMyPage" onclick="location.href='/mypage'" class="btn btn-lg btn-warning" style="visibility:hidden;">마이페이지</button>
+		    			<button id="btnLogin" class="w-50 btn btn-lg btn-primary" type="submit">마이페이지</button>
 		    		</tr>
 		   		</table>
 		   		<p class="mt-5 mb-3 text-muted">&copy; kmj</p>
@@ -147,17 +135,7 @@
     	$("#btnLogin").on("click", function(e) {
     		$("#loginForm").submit();
     	});
-    	var sessionId = [[${SESSION_USER_ID}]];
     	
-    	if(sessionId) {
-    		//location.href = "/mypage";
-    		$("#floatingPassword").css("visibility", "hidden");
-    		$("#btnMyPage").css("visibility", "visible");
-    		$("#btnLogin").hide();
-    		$("#btnJoin").hide();
-    		$("#floatingInput").val(sessionId);
-    		$("label[for='floatingPassword']").text("로그인되었습니다.");
-    	}
-    
+   
     </script>
 </html>
