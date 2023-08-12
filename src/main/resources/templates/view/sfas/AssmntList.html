@@ -18,7 +18,7 @@
                                     <th class="hidden-sm">Last Name</th>
                                     <th>Username</th>
                                     <th>Status</th>
-                                </tr>d
+                                </tr>
                             </thead>
                             <tbody>
                                 <tr>
@@ -60,8 +60,7 @@
                         </table>
                     </div>                      
                 </div>
-                <!--End Table Bordered-->
-                
+              
                 <!-- 상세내용 -->
                 <div class="panel panel-grey margin-bottom-40">
                     <div class="panel-heading">
@@ -128,5 +127,20 @@
                 
     		</div>
 		</div>	
+		<script th:inline="javascript">
+	new gridjs.Grid({
+		  columns: ["Name", "Email", "Phone Number"],
+		  data: [
+		    ["John", "john@example.com", "(353) 01 222 3333"],
+		    ["Mark", "mark@gmail.com", "(01) 22 888 4444"],
+		    ["Eoin", "eoin@gmail.com", "0097 22 654 00033"],
+		    ["Sarah", "sarahcdd@gmail.com", "+322 876 1233"],
+		    ["Afshin", "afshin@mail.com", "(353) 22 87 8356"]
+		  ]
+		}).render(document.getElementById("test"));
+    
+    </script>
 	</th:block>
+	
+	
 </th:block>
