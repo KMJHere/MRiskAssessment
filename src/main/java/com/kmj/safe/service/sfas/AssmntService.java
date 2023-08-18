@@ -17,4 +17,8 @@ public class AssmntService {
 	public List<AssmntContent> selectAssmntLst() throws Exception {
 		return assmntMP.selectAssmntLst();
 	}
+	
+	public List<AssmntContent> selectAssmntDtlLst() throws Exception {
+		return assmntMP.selectAssmnDtltLst();
+	}
 }

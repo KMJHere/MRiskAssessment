@@ -20,8 +20,17 @@ public class AssmntController {
 	public String selectAssmntLst(Model model) throws Exception {	
 		
 		List<AssmntContent> assmntContent = assmntService.selectAssmntLst();
-        model.addAttribute("result", assmntContent);
+        model.addAttribute("AssmntLst", assmntContent);
         
 		return "sfas/AssmntList";
+	}
+	
+	@GetMapping("/sfas/AssmntDtlList")
+	public String selectAssmnDtltLst(Model model) throws Exception {	
+		
+		List<AssmntContent> assmntContent = assmntService.selectAssmntLst();
+        model.addAttribute("AssmntDtlLst", assmntContent);
+        
+		return "sfas/AssmntDtlList";
 	}
 }

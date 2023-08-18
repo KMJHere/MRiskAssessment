@@ -3,6 +3,8 @@ package com.kmj.safe.config;
 import com.kmj.safe.security.handler.UserLoginFailureHandler;
 import com.kmj.safe.security.handler.UserLoginSuccessHandler;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,11 +46,19 @@ public class SecurityConfig {
         		.rememberMeParameter("remember-me")
         		.userDetailsService(userDetailsService);
         
+        http.logout()
+	        .logoutUrl("/logout")   // 로그아웃 처리 URL (= form action url)
+	        //.logoutSuccessUrl("/login") // 로그아웃 성공 후 targetUrl, 
+	        // logoutSuccessHandler 가 있다면 효과 없으므로 주석처리.
+	         // 로그아웃 핸들러 추가
+	        .logoutSuccessHandler((request, response, authentication) -> {
+	            response.sendRedirect("/login");
+	        }) // 로그아웃 성공 핸들러
+	        .deleteCookies("remember-me"); // 로그아웃 후 삭제할 쿠키 지정
         
 
         http.csrf().disable(); // csrf 토큰 비활성화
-        http.logout(); // invalidatedHttpSession() deleteCookies() 쿠키나 세션을 무효화 시키는 설정 추가 가능
-
+        
         return http.build();
     }
 
