@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.kmj.safe.repository.AssmntMP">
+<mapper namespace="com.kmj.safe.repository.sfas.AssmntMP">
 	<select id="selectAssmntLst" resultType="com.kmj.safe.model.AssmntContent"> 
 		Select			
 			COMPANY_ID,
@@ -23,6 +23,8 @@
 		From
 			TSF_ASSMNT_RECEIVE
 		Where 1 = 1
+		And COMPANY_ID = #{COMPANY_ID}
+		And PROJ_CODE = #{PROJ_CODE}
 		
 	</select>
 	
