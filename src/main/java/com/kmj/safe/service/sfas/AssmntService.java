@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.kmj.safe.model.AssmntContent;
+import com.kmj.safe.model.AssmntDtlContent;
 import com.kmj.safe.repository.sfas.AssmntMP;
 
 @Service
@@ -18,7 +19,7 @@ public class AssmntService {
 		return assmntMP.selectAssmntLst();
 	}
 	
-	public List<AssmntContent> selectAssmntDtlLst() throws Exception {
+	public List<AssmntDtlContent> selectAssmntDtlLst() throws Exception {
 		return assmntMP.selectAssmnDtltLst();
 	}
 }

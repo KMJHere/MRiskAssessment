@@ -3,6 +3,7 @@ package com.kmj.safe.controller.sfas;
 import java.util.List;
 
 import com.kmj.safe.model.AssmntContent;
+import com.kmj.safe.model.AssmntDtlContent;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,7 +29,7 @@ public class AssmntController {
 	@GetMapping("/sfas/AssmntDtlList")
 	public String selectAssmnDtltLst(Model model) throws Exception {	
 		
-		List<AssmntContent> assmntContent = assmntService.selectAssmntLst();
+		List<AssmntDtlContent> assmntContent = assmntService.selectAssmntDtlLst();
         model.addAttribute("AssmntDtlLst", assmntContent);
         
 		return "sfas/AssmntDtlList";
