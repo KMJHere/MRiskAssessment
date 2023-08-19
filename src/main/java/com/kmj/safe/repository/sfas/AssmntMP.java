@@ -11,4 +11,8 @@ public interface AssmntMP {
 	List<AssmntContent> selectAssmntLst();
 	
 	List<AssmntContent> selectAssmnDtltLst();
+	
+	int insertAssmntLst(AssmntContent assmntContent);
+	
+	int insertAssmntDtlLst(AssmntContent assmntContent);
 }
