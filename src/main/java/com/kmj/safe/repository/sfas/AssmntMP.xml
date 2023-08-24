@@ -11,10 +11,10 @@
 			CRTDATE,
 			MODUSERNO,
 			MODDATE,
-			CHECK_TF,
-			MNG_DATE_FROM,
-			MNG_DATE_TO,
-			STAN_MONTH,
+			Decode(CHECK_TF, 'T', '접수', '등록') CHECK_TF,
+			SF_DT_TO_STR(MNG_DATE_FROM, 'DATE') MNG_DATE_FROM,
+			SF_DT_TO_STR(MNG_DATE_TO, 'DATE') MNG_DATE_TO,
+			SF_STR_FM(STAN_MONTH, 'MON') STAN_MONTH,
 			STAN_DEGREE,
 			MAIN_CNSTRCT,
 			JFILE_GRP_NO,
@@ -23,9 +23,6 @@
 		From
 			TSF_ASSMNT_RECEIVE
 		Where 1 = 1
-		And COMPANY_ID = #{COMPANY_ID}
-		And PROJ_CODE = #{PROJ_CODE}
-		And R_COMPANY_ID = #{R_COMPANY_ID}		
 	</select>
 	
 	<select id="selectAssmnDtltLst" resultType="com.kmj.safe.model.AssmntContent"> 

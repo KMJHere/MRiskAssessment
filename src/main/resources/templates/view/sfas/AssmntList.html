@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<th:block th:replace="~{/basic :: setContent(~{this :: content})}">
+<th:block th:replace="~{/header :: setContent(~{this :: content})}">
 	<th:block th:fragment="content">
 		<div class="wrapper">
 			<div class="container content"> 
@@ -9,7 +9,7 @@
                     <div class="panel-heading">
                     	<table>
 	                    	<tr>
-		                        <td><h3 class="panel-title"><i class="fa fa-globe"></i>위험성평가등록부</h3></td>
+		                        <td><h3 class="panel-title"><i class="fa fa-globe"></i>위험성평가서</h3></td>
 	                        </tr>
                         </table>
                     </div>
@@ -17,49 +17,28 @@
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th>NO</th>
-                                    <th>회사명</th>
-                                    <th class="hidden-sm">Last Name</th>
-                                    <th>Username</th>
-                                    <th>Status</th>
+                                    <th>상태</th>
+                                    <th>월</th>
+                                    <th >회차</th>
+                                    <th>시작일자</th>
+                                    <th>종료일자</th>
+                                    <th>기업/협력사</th>
+                                    <th>대공종</th>
+                                    <th>현장소장의견</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Mark</td>
-                                    <td class="hidden-sm">Otto</td>
-                                    <td>@mdo</td>
-                                    <td><button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</button></td>
+                                <tr th:each="AssmntLst, i: ${AssmntLst}">
+                                   <td th:text="${AssmntLst.CHECK_TF}"></td>
+                                   <td th:text="${AssmntLst.STAN_MONTH}"></td>
+                                   <td th:text="${AssmntLst.CHECK_TF}"></td>
+                                   <td th:text="${AssmntLst.MNG_DATE_FROM}"></td>
+                                   <td th:text="${AssmntLst.MNG_DATE_TO}"></td>
+                                   <td th:text="${AssmntLst.CHECK_TF}"></td>
+                                   <td th:text="${AssmntLst.MAIN_CNSTRCT}"></td>
+                                   <td th:text="${AssmntLst.APPRV_CMT}"></td>
                                 </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Jacob</td>
-                                    <td class="hidden-sm">Thornton</td>
-                                    <td>@fat</td>
-                                    <td><button class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i> Edit</button></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Larry</td>
-                                    <td class="hidden-sm">the Bird</td>
-                                    <td>@twitter</td>
-                                    <td><button class="btn btn-info btn-xs"><i class="fa fa-share"></i> Share</button></td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>htmlstream</td>
-                                    <td class="hidden-sm">Web Design</td>
-                                    <td>@htmlstream</td>
-                                    <td><button class="btn btn-success btn-xs"><i class="fa fa-check"></i> Submit</button></td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>htmlstream</td>
-                                    <td class="hidden-sm">Web Design</td>
-                                    <td>@htmlstream</td>
-                                    <td><button class="btn btn-success btn-xs"><i class="fa fa-check"></i> Submit</button></td>
-                                </tr>
+                                
                             </tbody>
                         </table>
                     </div>                      
@@ -70,7 +49,7 @@
                     <div class="panel-heading">
                         <table>
 	                    	<tr>
-		                        <td><h3 class="panel-title"><i class="fa fa-globe"></i>위험성평가등록부별 상세내용</h3></td>
+		                        <td><h3 class="panel-title"><i class="fa fa-globe"></i>위험성평가서별 내용</h3></td>
 	                        </tr>
                         </table>
                     </div>
@@ -125,38 +104,143 @@
                         </table>
                     </div>                      
                 </div>
-                
-                
+                <div class="row">
                 <!-- 평가의견 -->
-				<div class="panel panel-grey margin-bottom-40 ">
-				<table>
-					<tr>
-						<td>
-							
-						</td>
-					</tr>
-				</table>
+                <div class="col-md-6">
+                
+				<div class="panel panel-grey margin-bottom-40">
+                    <div class="panel-heading">
+                        <table>
+	                    	<tr>
+		                        <td><h3 class="panel-title"><i class="fa fa-globe"></i>위험성평가서별 내용별 공사담당/팀장 검토의견</h3></td>
+	                        </tr>
+                        </table>
+                    </div>
+                    <div class="panel-body" style="height:200px; overflow-y:auto">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>NO</th>
+                                    <th>First Name</th>
+                                    <th class="hidden-sm">Last Name</th>
+                                    <th>Username</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Mark</td>
+                                    <td class="hidden-sm">Otto</td>
+                                    <td>@mdo</td>
+                                    <td><button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</button></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Jacob</td>
+                                    <td class="hidden-sm">Thornton</td>
+                                    <td>@fat</td>
+                                    <td><button class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i> Edit</button></td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Larry</td>
+                                    <td class="hidden-sm">the Bird</td>
+                                    <td>@twitter</td>
+                                    <td><button class="btn btn-info btn-xs"><i class="fa fa-share"></i> Share</button></td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>htmlstream</td>
+                                    <td class="hidden-sm">Web Design</td>
+                                    <td>@htmlstream</td>
+                                    <td><button class="btn btn-success btn-xs"><i class="fa fa-check"></i> Submit</button></td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>htmlstream</td>
+                                    <td class="hidden-sm">Web Design</td>
+                                    <td>@htmlstream</td>
+                                    <td><button class="btn btn-success btn-xs"><i class="fa fa-check"></i> Submit</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>                      
+                </div>
+				</div>
+				
+				<!-- 평가의견 -->
+                <div class="col-md-6">
+                
+				<div class="panel panel-grey margin-bottom-40">
+                    <div class="panel-heading">
+                        <table>
+	                    	<tr>
+		                        <td><h3 class="panel-title"><i class="fa fa-globe"></i>위험성평가서별 내용별 안전관리자 검토의견</h3></td>
+	                        </tr>
+                        </table>
+                    </div>
+                    <div class="panel-body" style="height:200px; overflow-y:auto">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>NO</th>
+                                    <th>First Name</th>
+                                    <th class="hidden-sm">Last Name</th>
+                                    <th>Username</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Mark</td>
+                                    <td class="hidden-sm">Otto</td>
+                                    <td>@mdo</td>
+                                    <td><button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</button></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Jacob</td>
+                                    <td class="hidden-sm">Thornton</td>
+                                    <td>@fat</td>
+                                    <td><button class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i> Edit</button></td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Larry</td>
+                                    <td class="hidden-sm">the Bird</td>
+                                    <td>@twitter</td>
+                                    <td><button class="btn btn-info btn-xs"><i class="fa fa-share"></i> Share</button></td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>htmlstream</td>
+                                    <td class="hidden-sm">Web Design</td>
+                                    <td>@htmlstream</td>
+                                    <td><button class="btn btn-success btn-xs"><i class="fa fa-check"></i> Submit</button></td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>htmlstream</td>
+                                    <td class="hidden-sm">Web Design</td>
+                                    <td>@htmlstream</td>
+                                    <td><button class="btn btn-success btn-xs"><i class="fa fa-check"></i> Submit</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>                      
+                </div>
+				</div>
+				
+				
 				</div>
                 
                 
                 
     		</div>
 		</div>	
-		<script th:inline="javascript">
-			new gridjs.Grid({
-				  columns: ["Name", "Email", "Phone Number"],
-				  data: [
-				    ["John", "john@example.com", "(353) 01 222 3333"],
-				    ["Mark", "mark@gmail.com", "(01) 22 888 4444"],
-				    ["Eoin", "eoin@gmail.com", "0097 22 654 00033"],
-				    ["Sarah", "sarahcdd@gmail.com", "+322 876 1233"],
-				    ["Afshin", "afshin@mail.com", "(353) 22 87 8356"]
-				  ]
-				}).render(document.getElementById("test"));
-			
 		
-    
-    </script>
 	</th:block>
 	
 	
