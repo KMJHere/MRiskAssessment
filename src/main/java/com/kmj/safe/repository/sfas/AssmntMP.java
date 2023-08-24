@@ -11,7 +11,7 @@ import com.kmj.safe.model.AssmntDtlContent;
 public interface AssmntMP {
 	List<AssmntContent> selectAssmntLst();
 	
-	List<AssmntDtlContent> selectAssmnDtltLst();
+	List<AssmntDtlContent> selectAssmnDtltLst(String REGIS_SEQ);
 	
 	int insertAssmntLst(AssmntContent assmntContent);
 	

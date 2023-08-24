@@ -17,11 +17,12 @@
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
+                                    <th>NO</th>
                                     <th>상태</th>
                                     <th>월</th>
                                     <th >회차</th>
                                     <th>시작일자</th>
-                                    <th>종료일자</th>
+                                    <th>종료일자</th> 
                                     <th>기업/협력사</th>
                                     <th>대공종</th>
                                     <th>현장소장의견</th>
@@ -29,12 +30,13 @@
                             </thead>
                             <tbody>
                                 <tr th:each="AssmntLst, i: ${AssmntLst}">
+                                   <td th:text="${i.count}"></td>
                                    <td th:text="${AssmntLst.CHECK_TF}"></td>
                                    <td th:text="${AssmntLst.STAN_MONTH}"></td>
                                    <td th:text="${AssmntLst.CHECK_TF}"></td>
                                    <td th:text="${AssmntLst.MNG_DATE_FROM}"></td>
                                    <td th:text="${AssmntLst.MNG_DATE_TO}"></td>
-                                   <td th:text="${AssmntLst.CHECK_TF}"></td>
+                                   <td><a th:href="@{/sfas/AssmntDtlList(REGIS_SEQ=${AssmntLst.REGIS_SEQ})}" th:text="${AssmntLst.R_COMPANY_ID}"></a></td>
                                    <td th:text="${AssmntLst.MAIN_CNSTRCT}"></td>
                                    <td th:text="${AssmntLst.APPRV_CMT}"></td>
                                 </tr>
@@ -72,34 +74,7 @@
                                     <td>@mdo</td>
                                     <td><button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</button></td>
                                 </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Jacob</td>
-                                    <td class="hidden-sm">Thornton</td>
-                                    <td>@fat</td>
-                                    <td><button class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i> Edit</button></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Larry</td>
-                                    <td class="hidden-sm">the Bird</td>
-                                    <td>@twitter</td>
-                                    <td><button class="btn btn-info btn-xs"><i class="fa fa-share"></i> Share</button></td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>htmlstream</td>
-                                    <td class="hidden-sm">Web Design</td>
-                                    <td>@htmlstream</td>
-                                    <td><button class="btn btn-success btn-xs"><i class="fa fa-check"></i> Submit</button></td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>htmlstream</td>
-                                    <td class="hidden-sm">Web Design</td>
-                                    <td>@htmlstream</td>
-                                    <td><button class="btn btn-success btn-xs"><i class="fa fa-check"></i> Submit</button></td>
-                                </tr>
+                                
                             </tbody>
                         </table>
                     </div>                      

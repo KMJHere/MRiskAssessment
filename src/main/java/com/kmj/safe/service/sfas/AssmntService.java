@@ -19,7 +19,7 @@ public class AssmntService {
 		return assmntMP.selectAssmntLst();
 	}
 	
-	public List<AssmntDtlContent> selectAssmntDtlLst() throws Exception {
-		return assmntMP.selectAssmnDtltLst();
+	public List<AssmntDtlContent> selectAssmntDtlLst(String REGIS_SEQ) throws Exception {
+		return assmntMP.selectAssmnDtltLst(REGIS_SEQ);
 	}
 }
