@@ -11,10 +11,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.kmj.safe.common.UserInfo;
+
 @Controller
 public class LoginController {
 	@Autowired
 	private HttpSession session;
+	@Autowired
+	private UserInfo userInfo;
 
 	
 	@GetMapping("/login")
@@ -23,7 +27,7 @@ public class LoginController {
 		//if(session.getAttribute("login") != null) return "/mypage";
 		HashMap<String, Object> mRtnDat = new HashMap<>();
 		
-		mRtnDat.put("SESSION_USER_ID", session.getAttribute("SESSION_USER_ID"));
+		mRtnDat.put("SESSION_USER_ID", userInfo.getUserId());
 		
 			
 		return mRtnDat;

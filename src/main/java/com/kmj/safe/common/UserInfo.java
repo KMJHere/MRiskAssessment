@@ -8,55 +8,99 @@ import javax.servlet.http.HttpSession;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-
-@AllArgsConstructor
-@Builder
-@Data
 @Scope(value = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
 @Component
 public class UserInfo {
-	private String SESSION_COMPANY_ID;
+	private boolean isLogin;
 	
-	private String SESSION_USER_NO;
+	private String companyId;
 	
-	private String SESSION_USER_ID;
+	private String userNo;
 	
-	private String SESSION_USER_NM;
+	private String userId;
+	
+	private String userNm;
+	
+	public boolean getIsLogin() {
+		return isLogin;
+	}
+
+	private void setIsLogin(boolean abIsLogin) {
+		this.isLogin = abIsLogin;
+	}
+	
+	public String getUserNo() {
+		return userNo;
+	}
+	
+	private void setUserNo(String asUserNo) {
+		this.userNo = asUserNo;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	private void setUserId(String asUserId) {
+		this.userId = asUserId;
+	}
+
+	public String getUserNm() {
+		return userNm;
+	}
+
+	private void setUserNm(String asUserNm) {
+		this.userNm = asUserNm;
+	}
+	
+	public String getCompanyId() {
+		return companyId;
+	}
+
+	private void setCompanyId(String asCompanyId) {
+		this.companyId = asCompanyId;
+	}
 	
 	public Map<String, Object> getFixData() {
 		Map<String, Object> mData = new HashMap<>();
 		
-		mData.put("SESSION_COMPANY_ID", this.getSESSION_COMPANY_ID());
-		mData.put("SESSION_USER_NO", this.getSESSION_USER_NO());
-		mData.put("SESSION_USER_ID", this.getSESSION_USER_ID());
-		mData.put("SESSION_USER_NM", this.getSESSION_USER_NM());
+		mData.put("IS_LOGIN", this.getIsLogin());
+		mData.put("SESSION_COMPANY_ID", this.getCompanyId());
+		mData.put("SESSION_USER_NO", this.getUserNo());
+		mData.put("SESSION_USER_ID", this.getUserId());
+		mData.put("SESSION_USER_NM", this.getUserNm());
 		
 		return mData;
 	}
 	
+
 	public void setSessionData(HttpSession session) {
-		this.setSESSION_COMPANY_ID((String)session.getAttribute("SESSION_COMPANY_ID"));
-		this.setSESSION_USER_NO((String)session.getAttribute("SESSION_USER_NO"));
-		this.setSESSION_USER_ID((String)session.getAttribute("SESSION_USER_ID"));
-		this.setSESSION_USER_NM((String)session.getAttribute("SESSION_USER_NM"));
+		System.out.println("sessionssss:" + (String)session.getAttribute("USER_NO"));
+		
+		this.setIsLogin(StringUtils.hasText((String)session.getAttribute("USER_NO")));
+		this.setCompanyId((String)session.getAttribute("COMPANY_ID"));
+		this.setUserNo((String)session.getAttribute("USER_NO"));
+		this.setUserId((String)session.getAttribute("USER_ID"));
+		this.setUserNm((String)session.getAttribute("USER_NM"));
+		
+		System.out.println("getIsLogin:" + this.getIsLogin());
 	}
 	
 	public void init() {
-		this.setSESSION_COMPANY_ID(null);
-		this.setSESSION_USER_NO(null);
-		this.setSESSION_USER_ID(null);
-		this.setSESSION_USER_NM(null);
+		this.setIsLogin(false); 
+		this.setCompanyId(null);
+		this.setUserNo(null);
+		this.setUserId(null);
+		this.setUserNm(null);
 	}
 	
 	public Map<String, Object> toMapping(Map<String, Object> amData) {
-		amData.put("SESSION_COMPANY_ID", this.getSESSION_COMPANY_ID());
-		amData.put("SESSION_USER_NO", this.getSESSION_USER_NO());
-		amData.put("SESSION_USER_ID", this.getSESSION_USER_ID());
-		amData.put("SESSION_USER_NM", this.getSESSION_USER_NM());
+		amData.put("SESSION_COMPANY_ID", this.getCompanyId());
+		amData.put("SESSION_USER_NO", this.getUserNo());
+		amData.put("SESSION_USER_ID", this.getUserId());
+		amData.put("SESSION_USER_NM", this.getUserNm());
 		
 		return amData;
 	}
