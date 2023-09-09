@@ -67,25 +67,21 @@ public class UserInfo {
 		Map<String, Object> mData = new HashMap<>();
 		
 		mData.put("IS_LOGIN", this.getIsLogin());
-		mData.put("SESSION_COMPANY_ID", this.getCompanyId());
-		mData.put("SESSION_USER_NO", this.getUserNo());
-		mData.put("SESSION_USER_ID", this.getUserId());
-		mData.put("SESSION_USER_NM", this.getUserNm());
+		mData.put("COMPANY_ID", this.getCompanyId());
+		mData.put("USER_NO", this.getUserNo());
+		mData.put("USER_ID", this.getUserId());
+		mData.put("USER_NM", this.getUserNm());
 		
 		return mData;
 	}
 	
 
-	public void setSessionData(HttpSession session) {
-		System.out.println("sessionssss:" + (String)session.getAttribute("USER_NO"));
-		
+	public void setSessionData(HttpSession session) {		
 		this.setIsLogin(StringUtils.hasText((String)session.getAttribute("USER_NO")));
 		this.setCompanyId((String)session.getAttribute("COMPANY_ID"));
 		this.setUserNo((String)session.getAttribute("USER_NO"));
 		this.setUserId((String)session.getAttribute("USER_ID"));
 		this.setUserNm((String)session.getAttribute("USER_NM"));
-		
-		System.out.println("getIsLogin:" + this.getIsLogin());
 	}
 	
 	public void init() {
@@ -97,10 +93,10 @@ public class UserInfo {
 	}
 	
 	public Map<String, Object> toMapping(Map<String, Object> amData) {
-		amData.put("SESSION_COMPANY_ID", this.getCompanyId());
-		amData.put("SESSION_USER_NO", this.getUserNo());
-		amData.put("SESSION_USER_ID", this.getUserId());
-		amData.put("SESSION_USER_NM", this.getUserNm());
+		amData.put("COMPANY_ID", this.getCompanyId());
+		amData.put("USER_NO", this.getUserNo());
+		amData.put("USER_ID", this.getUserId());
+		amData.put("USER_NM", this.getUserNm());
 		
 		return amData;
 	}
