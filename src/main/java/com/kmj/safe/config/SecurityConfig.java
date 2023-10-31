@@ -37,7 +37,7 @@ public class SecurityConfig {
     MraUserDetailsService userDetailsService;
     
     @Bean
-    public WebSecurityCustomizer websecurityCustomizer() {
+    public WebSecurityCustomizer configure() {
     	return (web) -> web.ignoring().antMatchers("/css/**", "/img/**", "/js/**", "/plugin/**", "/font/**", "/assets/**");
     	//return (web) -> web.ignoring().requestMatchers(PathRequest.toStaticResources().atCommonLocations());
     }
@@ -54,13 +54,11 @@ public class SecurityConfig {
 				.loginProcessingUrl("/login_proc") //post mapping 주소, security 처리 
 				.usernameParameter("id")
 				.passwordParameter("pw").permitAll())
-        	.rememberMe()
-        		.rememberMeParameter("remember-me")
         		.userDetailsService(userDetailsService);
         
         // remember-me 기능 구현
         http.rememberMe()
-        		.key("12345678")
+        		.key("remember")
         		.tokenRepository(persistentTokenRepository())
         		.userDetailsService(userDetailsService)
         		.tokenValiditySeconds(60*60*24*30);
