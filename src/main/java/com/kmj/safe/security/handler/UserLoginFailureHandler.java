@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 
 public class UserLoginFailureHandler implements AuthenticationFailureHandler {
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -39,7 +40,7 @@ public class UserLoginFailureHandler implements AuthenticationFailureHandler {
 		} else request.setAttribute("LoginFailMessage", "계정을 찾을 수 없습니다.");
 		
 		logger.info("errorMsg: " + request.getAttribute("LoginFailMessage"));
-		
+
 		request.getRequestDispatcher("/login").forward(request, response);
     }
 }
