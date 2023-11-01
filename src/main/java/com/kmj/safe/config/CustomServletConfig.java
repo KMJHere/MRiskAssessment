@@ -1,16 +1,18 @@
 package com.kmj.safe.config;
 
-import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-@Configuration
-@EnableWebMvc
+
 public class CustomServletConfig implements WebMvcConfigurer {
+	/*
+	@Configuration
+	@EnableWebMvc*/
+	
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		// Swagger UI 적용 > 정적 파일 경로 재정의
+	
 		registry.addResourceHandler("/js/**")
 				.addResourceLocations("classpath:/static/js/");
 		registry.addResourceHandler("/font/**")

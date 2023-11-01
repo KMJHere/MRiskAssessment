@@ -16,18 +16,19 @@ import com.kmj.safe.common.UserInfo;
 @Controller
 public class LoginController {
 	@Autowired
-	private HttpSession session;
-	@Autowired
 	private UserInfo userInfo;
 
 	
 	@GetMapping("/login")
 	public Map<String, Object> login() {
 		
+		System.out.println("login controller..");
 		//if(session.getAttribute("login") != null) return "/mypage";
 		HashMap<String, Object> mRtnDat = new HashMap<>();
 		
-		mRtnDat.put("SESSION_USER_ID", userInfo.getUserId());
+		mRtnDat.put("SESSION_DATA", userInfo.getFixData());
+		
+		//mRtnDat.put("SESSION_USER_ID", userInfo.getUserId());
 		
 			
 		return mRtnDat;
