@@ -7,6 +7,6 @@ import org.springframework.web.multipart.MultipartFile;
 import lombok.Data;
 
 @Data
-public class FileFileDTO {
+public class FileDTO {
 	private List<MultipartFile> files;
 }

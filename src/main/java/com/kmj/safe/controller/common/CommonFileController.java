@@ -1,62 +1,97 @@
 package com.kmj.safe.controller.common;
 
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.util.Map;
-import javax.servlet.http.HttpServletResponse;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
-
-
+import com.kmj.safe.dto.FileDTO;
+import com.kmj.safe.dto.FileResultDTO;
 import com.kmj.safe.service.common.CommonFileService;
 
+import java.io.File;
+import java.io.IOException;
 
-@Controller
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpHeaders;
+
+import lombok.extern.log4j.Log4j2;
+import net.coobird.thumbnailator.Thumbnailator;
+
+@RestController
+@Log4j2
 public class CommonFileController {	
-	private static final Logger LOGGER = LoggerFactory.getLogger(CommonFileController.class);
-	
+	@Value("${com.kmj.upload.path}")
+	private String uploadPath;
 	@Autowired
-	private CommonFileService commonFileService;
+	private CommonFileService commonfileService;
 	
-			
-	@RequestMapping("/common/file/selectFileLst.do")
-	@ResponseBody	
-	public String selectFileLst(@RequestBody  Map<String, Object> amDat) throws Exception {		
-
-		String sMsg = "";
+	@PostMapping(value="/upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+	public List<FileResultDTO> upload(FileDTO uploadFileDTO, @PathVariable String fileGrpNo) throws Exception {
 		
-		try {						
-			
-			 commonFileService.selectFilList(amDat.get("JFILE_GRP_NO").toString());
-			 sMsg = "success";
+		log.info(uploadFileDTO);
+		
+		return commonfileService.upload(uploadFileDTO, fileGrpNo);
+	}
+	
+	@GetMapping("/view/{fileName}")
+	public ResponseEntity<Resource> viewFileGet(@PathVariable String fileName) {
+		Resource resource = new FileSystemResource(uploadPath+File.separator + fileName);
+		
+		String resourceName = resource.getFilename();
+		HttpHeaders headers = new HttpHeaders();
+		
+		try {
+			headers.add("Content-Type", Files.probeContentType(resource.getFile().toPath()));
 			
 		} catch(Exception e) {
-			e.printStackTrace();
-		} 
+			return ResponseEntity.internalServerError().build();
+		}
 		
-		return sMsg;
+		return ResponseEntity.ok().headers(headers).body(resource);
 	}
 	
-	
-	
-	/**
-	 * <pre>
-	 * [파일 업로드]     
-	 * </pre>  
-	 * 
-	 * @param aMultiPartRequest
-	 * @return 파일
-	 */
-	@RequestMapping("/common/file/uploadMultiByWs.do")	
-	public void uploadMultiByWs(MultipartHttpServletRequest aMultiPartRequest, HttpServletResponse aResponse) throws Exception {
-		commonFileService.upload(aMultiPartRequest, aResponse);
+	public Map<String, Boolean> removeFile(@PathVariable String fileName) {
+		Resource resource = new FileSystemResource(uploadPath+File.separator + fileName);
+		
+		Map<String, Boolean> resultMap = new HashMap<>();
+		boolean removed = false;
+		
+		try {
+			String contentType = Files.probeContentType(resource.getFile().toPath());
+			removed = resource.getFile().delete();
+			
+			// 섬네일 존재 시
+			if(contentType.startsWith("image")) {
+				File thumbnailFile = new File(uploadPath+File.separator + "s_" + fileName);
+				
+				thumbnailFile.delete();
+				
+			}
+			
+		} catch(Exception e) {
+			log.error(e.getMessage());
+		}
+		
+		resultMap.put("result", removed);
+		
+		return resultMap;
 	}
 	
-
 	
 }
