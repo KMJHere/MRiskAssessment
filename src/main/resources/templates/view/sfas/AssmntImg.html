@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{/header :: setContent(~{this :: content})}">
+	<th:block th:fragment="content">
+		<div class="wrapper">
+			<div class="container content"> 
+		 		<form action="" id="sky-form4" class="sky-form">
+		 		<fieldset>
+                   <div class="row">
+                       <label class="select">
+                           <select name="stndMonth">
+                               <option value="0" selected disabled>회차선택</option>
+                               <option value="1">1회차</option>
+                               <option value="2">2회차</option>
+                               <option value="3">3회차</option>
+                               <option value="4">4회차</option>
+                           </select>
+                           <i></i>
+                       </label>
+         
+                   
+                   <button type="button" class="button uploadFileBtn">업로드</button>
+               
+                   </div>
+               </fieldset> 
+               </form>
+    		</div>
+		</div>	
+		
+		<!-- 사진 업로드 modal start -->
+		<div class="modal uploadModal" tabindex="-1">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Upload Image</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>					
+					</div>
+					<div class="modal-body">
+						<div class="input-group mb-3">
+							<input type="file" name="files" class="form-control" multiple>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary uploadBtn">Upload</button>
+						<button type="button" class="btn btn-outline-dark CloseUploadBtn">Close</button>
+					</div>				
+				</div>
+			</div>
+		</div>
+		<!-- 사진 업로드 modal end -->
+		
+	</th:block>
+</th:block>
+
+<script layout:fragment="script" th:inline="javascript">
+	const errors = [[${errors}]]
+	console.log(errors);
+	
+	let errorMsg = ""
+	
+	if(errors) {
+		for(let i = 0; i < errors.length; i++) {
+			errorMsg += "${errors[i].filed}은 ${errors[i].code} \n";
+		}
+		
+		alert(errorMsg);
+	}
+	
+	// 파일 업로드 모달
+	const uploadModal = new bootstrap.Modal(document.querySelector(".uploadModal"))
+	
+	document.querySelector(".uploadFileBtn").addEventListener("click", function(e){
+		e.stopPropagation();
+		e.preventDefault();
+		uploadModal.show();
+	}, false);
+	
+	// 파일 업로드
+	document.querySelector(".uploadBtn").addEventListener("click", function(e){
+		const formObj = new FormData();		
+		const fileInput = document.querySelector("input[name='files']");
+		
+		
+	});
+	
+
+</script>
