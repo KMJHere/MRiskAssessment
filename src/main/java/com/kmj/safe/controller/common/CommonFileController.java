@@ -3,6 +3,7 @@ package com.kmj.safe.controller.common;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -42,11 +43,11 @@ public class CommonFileController {
 	private CommonFileService commonfileService;
 	
 	@PostMapping(value="/upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-	public List<FileResultDTO> upload(FileDTO uploadFileDTO, @PathVariable String fileGrpNo) throws Exception {
+	public List<FileResultDTO> upload(FileDTO uploadFileDTO, @RequestParam String jFileGrpNo) throws Exception {
 		
 		log.info(uploadFileDTO);
 		
-		return commonfileService.upload(uploadFileDTO, fileGrpNo);
+		return commonfileService.upload(uploadFileDTO, jFileGrpNo);
 	}
 	
 	@GetMapping("/view/{fileName}")

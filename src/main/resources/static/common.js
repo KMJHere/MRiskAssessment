@@ -142,6 +142,7 @@ async function uploadToServer(formObj) {
 		method: 'post',
 		url: '/upload',
 		data: formObj,
+		params: {jFileGrpNo:1},
 		headers: {
 			'Content-Type': 'multipart/form-data',			
 		},	
