@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kmj.safe.repository.sfas.AssmntMP">
-	<select id="selectAssmntLst" resultType="com.kmj.safe.model.AssmntContent"> 
+	<select id="selectAssmntLst" resultType="com.kmj.safe.model.AssmntContent" parameterType="map"> 
 		Select			
 			COMPANY_ID,
 			PROJ_CODE,
@@ -20,10 +20,11 @@
 			JFILE_GRP_NO,
 			CNL_CMT,
 			APPRV_CMT,
-			#{SESSION_COMPANY_ID} TT
+			#{COMPANY_ID} TEST
 		From
 			TSF_ASSMNT_RECEIVE
 		Where 1 = 1
+		And COMPANY_ID = #{COMPANY_ID}
 	</select>
 	
 	<select id="selectAssmnDtltLst" resultType="com.kmj.safe.model.AssmntContent"> 

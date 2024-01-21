@@ -24,11 +24,12 @@ public class UserLoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandl
 	
 	@Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
-		logger.debug("onAuthenticationSuccess Start");
+		logger.info("onAuthenticationSuccess Start");
 		MraUserDetails member = (MraUserDetails)authentication.getPrincipal();
 		
 		HttpSession session = request.getSession();
 
+		session.setAttribute("IS_LOGIN", String.valueOf(member.getUserno())); 
     	session.setAttribute("COMPANY_ID", String.valueOf(member.getCompanyId()));
     	session.setAttribute("USER_NO", String.valueOf(member.getUserno()));
     	session.setAttribute("USER_ID", member.getUsername());

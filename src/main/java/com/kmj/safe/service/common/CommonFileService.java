@@ -36,20 +36,28 @@ import javax.servlet.http.HttpServletResponseWrapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.kmj.safe.common.UserInfo;
-import com.kmj.safe.repository.common.CommonFileMP;
+import com.kmj.safe.dto.FileDTO;
+import com.kmj.safe.dto.FileResultDTO;
+import com.kmj.safe.repository.common.CommonFileMP; 
+
+import net.coobird.thumbnailator.Thumbnailator;
 
 
 @Service
 public class CommonFileService {
 	private static final Logger LOGGER = LoggerFactory.getLogger(CommonFileService.class);
-
+	
+	@Value("${com.kmj.upload.path}")
+	private String uploadPath;
 	@Autowired
 	private CommonFileMP commonFileMP;	
 	@Autowired
@@ -69,7 +77,52 @@ public class CommonFileService {
 	}	
 	
 	
-	public void upload(MultipartHttpServletRequest aMultiPartRequest, HttpServletResponse aResponse) throws Exception {
+	public List<FileResultDTO> upload(FileDTO uploadFileDTO, @PathVariable String fileGrpNo) throws Exception {
+	
+		List<Map<String, Object>> lSaveLst = new ArrayList<>();
+		
+		if(uploadFileDTO.getFiles() != null) {
+			
+			final List<FileResultDTO> list = new ArrayList<>();
+			
+			uploadFileDTO.getFiles().forEach(MultipartFile -> {
+				
+				String originalName = MultipartFile.getOriginalFilename();
+				String uuid = fileGrpNo;
+				
+				Path savePath = Paths.get(uploadPath, uuid+"_"+originalName);
+				
+				boolean image = false;
+				
+				try {
+					MultipartFile.transferTo(savePath);
+					
+					// 이미지 파일일 경우..
+					if(Files.probeContentType(savePath).startsWith("image")) {
+						image = true;
+						
+						File thumbFile = new File(uploadPath, "s_" + uuid + "_" + originalName);
+						
+						Thumbnailator.createThumbnail(savePath.toFile(), thumbFile, 200, 200);						
+					}
+				} catch(IOException e) {
+					e.printStackTrace();
+				}
+				
+				list.add(FileResultDTO.builder()
+							.uuid(uuid)
+							.fileName(originalName)
+							.img(image).build()
+				);
+				
+				
+			});
+			
+			return list;
+		}
+		
+		return null;
+	
 	}
 	
 }

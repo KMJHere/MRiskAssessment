@@ -113,11 +113,9 @@
 		
 		    <div class="checkbox mb-3">
 		      <label>
-		        <input name="remember-me" type="checkbox" value="remember-me"> Remember me
+		        <input name="remember-me" type="checkbox"> Remember me
 		      </label>
-		    </div>
-		    
-		    
+		    </div> 
 		  </form>
 		  <div> 
 		  		<table>
@@ -148,7 +146,7 @@
     	$("#btnLogin").on("click", function(e) {
     		$("#loginForm").submit();
     	});
-    	var sessionId = [[${SESSION_USER_ID}]];
+    	var sessionId = [[${SESSION_DATA.USER_ID}]];
     	
     	if(sessionId) {
     		//location.href = "/mypage";
@@ -158,7 +156,9 @@
     		$("#btnLogin").hide();
     		$("#btnJoin").hide();
     		$("#floatingInput").val(sessionId);
-    		$("label[for='floatingPassword']").text("로그인되었습니다.");
+    		$("#floatingInput").prop("readonly", true);
+    		$(".checkbox mb-3").css("visibility", "hidden");
+    		$("label[for='floatingPassword']").text("로그인되었습니다.");   		
     	}
     
     </script>

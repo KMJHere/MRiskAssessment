@@ -9,7 +9,7 @@
                     <div class="panel-heading">
                     	<table>
 	                    	<tr>
-		                        <td><h3 class="panel-title"><i class="fa fa-globe"></i>위험성평가서</h3></td>
+		                        <td><h3 class="panel-title">위험성평가서</h3></td>
 	                        </tr>
                         </table>
                     </div>
@@ -51,7 +51,7 @@
                     <div class="panel-heading">
                         <table>
 	                    	<tr>
-		                        <td><h3 class="panel-title"><i class="fa fa-globe"></i>위험성평가서별 내용</h3></td>
+		                        <td><h3 class="panel-title">위험성평가서별 내용</h3></td>
 	                        </tr>
                         </table>
                     </div>
@@ -59,20 +59,35 @@
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th>NO</th>
-                                    <th>First Name</th>
-                                    <th class="hidden-sm">Last Name</th>
-                                    <th>Username</th>
-                                    <th>Status</th>
+                                    <th rowspan="2">NO</th>
+                                    <th rowspan="2">공종</th>
+                                    <th rowspan="2">위치</th>
+                                    <th rowspan="1" colspan="5">위험성평가</th>
+                                    <th rowspan="1" colspan="2">작업일정</th>        
+                                </tr>
+                                <tr>
+                                   
+                                    <th>위험요인</th>
+                                    <th>재해형태</th>
+                                    <th>위험등급</th>
+                                    <th>중점등록</th>
+                                    <th>개선대책</th>
+                                    <th>시작일자</th>
+                                    <th>종료일자</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Mark</td>
-                                    <td class="hidden-sm">Otto</td>
-                                    <td>@mdo</td>
-                                    <td><button class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</button></td>
+                                <tr th:each="AssmntDtlLst, i: ${AssmntDtlLst}">
+                                   <td th:text="${i.count}"></td>
+                                   <td th:text="${AssmntDtlLst.CHECK_TF}"></td>
+                                   <td th:text="${AssmntDtlLst.}"></td>
+                                   <td th:text="${AssmntLst.CHECK_TF}"></td>
+                                   <td th:text="${AssmntLst.DISASTER_FORM}"></td>
+                                   <td th:text="${AssmntLst.MNG_DATE_TO}"></td>
+                                   <td><a th:href="@{/sfas/AssmntDtlList(REGIS_SEQ=${AssmntLst.REGIS_SEQ})}" th:text="${AssmntLst.R_COMPANY_ID}"></a></td>
+                                   <td th:text="${AssmntLst.MAIN_CNSTRCT}"></td>
+                                   <td th:text="${AssmntLst.APPRV_CMT}"></td>
+                                   <td th:text="${AssmntLst.APPRV_CMT}"></td>
                                 </tr>
                                 
                             </tbody>
@@ -87,7 +102,7 @@
                     <div class="panel-heading">
                         <table>
 	                    	<tr>
-		                        <td><h3 class="panel-title"><i class="fa fa-globe"></i>위험성평가서별 내용별 공사담당/팀장 검토의견</h3></td>
+		                        <td><h3 class="panel-title">위험성평가서별 내용별 공사담당/팀장 검토의견</h3></td>
 	                        </tr>
                         </table>
                     </div>
@@ -151,7 +166,7 @@
                     <div class="panel-heading">
                         <table>
 	                    	<tr>
-		                        <td><h3 class="panel-title"><i class="fa fa-globe"></i>위험성평가서별 내용별 안전관리자 검토의견</h3></td>
+		                        <td><h3 class="panel-title">위험성평가서별 내용별 안전관리자 검토의견</h3></td>
 	                        </tr>
                         </table>
                     </div>
@@ -206,13 +221,8 @@
                         </table>
                     </div>                      
                 </div>
-				</div>
-				
-				
-				</div>
-                
-                
-                
+				</div>			
+				</div>  
     		</div>
 		</div>	
 		
