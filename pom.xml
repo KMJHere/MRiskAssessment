@@ -110,6 +110,10 @@
 		<dependency>
 		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot-starter-jdbc</artifactId>
+<<<<<<< HEAD
+=======
+		    <version>3.0.12</version>
+>>>>>>> branch 'master' of https://github.com/KMJHere/MRiskAssessment.git
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/net.coobird/thumbnailator -->
 		<dependency>

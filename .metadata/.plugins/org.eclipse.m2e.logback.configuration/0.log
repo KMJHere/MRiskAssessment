@@ -1,4 +1,5 @@
 2022-10-06 11:19:41,810 [Worker-6: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is not available. Remote download required.
+<<<<<<< HEAD
 2023-09-09 14:05:23,248 [Worker-2: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
 2023-09-09 14:09:40,112 [Worker-19: Update Maven projects configuration] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
 2023-09-09 14:09:40,783 [Worker-19: Update Maven projects configuration] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.kmj:safe:0.0.1-SNAPSHOT @ C:\mra\MRiskAssessment\MRiskAssessment\pom.xml.
@@ -53,3 +54,6 @@ java.lang.IllegalStateException: Preference node "org.eclipse.jdt.apt.core" has 
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
 2023-09-09 14:10:33,308 [Worker-19: Update Maven projects configuration] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed: 53 sec
 2023-09-09 14:12:42,946 [Worker-3: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+=======
+2023-09-10 19:25:52,429 [Worker-8: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+>>>>>>> branch 'master' of https://github.com/KMJHere/MRiskAssessment.git
